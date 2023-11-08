@@ -1,0 +1,201 @@
+Default Method:
+import java.util.*;
+
+class VectorDemo {
+    public static void main(String[] args) {
+        Vector v = new Vector();
+        v.add(1);
+        v.add(2);
+        v.add("Java");
+        v.add("for beginners");
+        v.add(3);
+        System.out.println("Vector is : " + v);
+    }
+}
+
+
+
+
+Index Specification Method:
+import java.util.*;
+
+class VectorDemo {
+    public static void main(String[] args) {
+        Vector v = new Vector();
+        v.add(0, 1);
+        v.add(1, 2);
+        v.add(2, "Java");
+        v.add(3, "for beginners");
+        v.add(4, 3);
+        System.out.println("Vector is : " + v);
+    }
+}
+
+
+
+Using addAll() Method:
+import java.util.*;
+
+class VectorDemo {
+    public static void main(String[] args) {
+        ArrayList arr = new ArrayList();
+        arr.add(1);
+        arr.add(2);
+        arr.add("Java");
+        arr add("for beginners");
+        arr.add(3);
+        Vector v = new Vector();
+        v.add(5);
+        v.addAll(1, arr);
+        System.out.println("Vector is : " + v);
+    }
+}
+
+
+
+
+Using clear() Method:
+import java.util.*;
+
+class VectorDemo {
+    public static void main(String[] args) {
+        Vector v = new Vector();
+        v.add(0, 1);
+        v.add(1, 2);
+        v.add(2, "Java");
+        v.add(3, "for beginners");
+        v.add(4, 3);
+        System.out.println("Vector is : " + v);
+        v.clear();
+        System.out.println("Vector after clearing is : " + v);
+    }
+}
+
+
+
+
+
+Using clone() Method:
+import java.util.*;
+
+class VectorDemo {
+    public static void main(String[] args) {
+        Vector v = new Vector();
+        Vector v_clone = new Vector();
+        v.add(0, 1);
+        v.add(1, 2);
+        v.add(2, "Java");
+        v.add(3, "for beginners");
+        v.add(4, 3);
+        System.out.println("Vector is : " + v);
+        v_clone = (Vector) v.clone();
+        System.out.println("Cloned Vector is : " + v_clone);
+    }
+}
+
+
+
+
+
+Using contains() Method:
+import java.util.*;
+
+class VectorDemo {
+    public static void main(String[] args) {
+        Vector v = new Vector();
+        v.add(0, 1);
+        v.add(1, 2);
+        v.add(2, "Java");
+        v.add(3, "for beginners");
+        v.add(4, 3);
+        System.out.println("Vector is : " + v);
+
+        if (v.contains("Java")) {
+            System.out.println("'Java' exists in the Vector.");
+        } else {
+            System.out.println("'Java' does not exist in the Vector.");
+        }
+    }
+}
+
+
+
+
+
+Using ensureCapacity() Method:
+import java.util.*;
+
+class VectorDemo {
+    public static void main(String[] args) {
+        Vector v = new Vector();
+        v.ensureCapacity(22);
+        System.out.println("Minimum capacity is : " + v.capacity());
+    }
+}
+
+
+
+
+Using get() Method:
+import java.util.*;
+
+class VectorDemo {
+    public static void main(String[] args) {
+        Vector v = new Vector();
+        v.ensureCapacity(10);
+        v.add(1);
+        v.add(2);
+        v.add("Java");
+        v.add("for beginners");
+        v.add(3);
+        System.out.println("Element at index 2 is : " + v.get(2));
+    }
+}
+
+
+
+
+
+Using indexOf() Method:
+import java.util.*;
+
+class VectorDemo {
+    public static void main(String[] args) {
+        Vector v = new Vector();
+        v.ensureCapacity(10);
+        v.add(1);
+        v.add(2);
+        v.add("Java");
+        v.add("for beginners");
+        v.add(3);
+        System.out.println("Index of 'Java' is : " + v.indexOf("Java"));
+    }
+}
+
+
+
+
+
+
+Using isEmpty() Method:
+import java.util.*;
+
+class VectorDemo {
+    public static void main(String[] args) {
+        Vector v = new Vector();
+        v.add(1);
+        v.add(2);
+        v.add("Java");
+        v.add("for beginners");
+        v.add(3);
+        System.out.println("Vector is : " + v);
+        v.clear();
+        System.out.println("Vector after clearing is : " + v);
+
+        if (v.isEmpty()) {
+            System.out.println("Vector is empty.");
+        } else {
+            System.out.println("Vector is not empty.");
+        }
+    }
+}

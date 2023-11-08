@@ -1,8 +1,12 @@
 class Adder{
 static int add(int a,int b)
-{return a+b;}
+{
+return a+b;
+}
 static int add(int a,int b,int c)
-{return a+b+c;}
+{
+return a+b+c;
+}
 }
 class Test{
 public static void main(String args[])

@@ -2,7 +2,7 @@ public class TryCatchExample1 {
     public static void main(String[] args) {
         try {
             int data = 50 / 0; // may throw exception
-            System.out.println("Result: " + data); // This line won't be reached
+            System.out.println("Result: " + data); 
         } catch (ArithmeticException e) {
             System.out.println("An arithmetic exception occurred: " + e.getMessage());
         }
@@ -23,7 +23,7 @@ public class TryCatchExample9 {
       try
 	  {
       int arr[]= {1,3,5,7};
-      System.out.println(arr[10]); //may throw exception
+      System.out.println(arr[10]); 
        }
 // handling the array exception 
     catch (ArrayIndexOutOfBoundsException e)

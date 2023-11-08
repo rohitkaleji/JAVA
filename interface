@@ -1,0 +1,78 @@
+//SALONI MORE - S21 (81)
+
+interface Vehicle{
+void tyre();
+void seat();
+void brakes();
+}
+
+class Bike implements Vehicle{
+public void tyre() {System.out.println("bike tyre is full");}
+public void seat() {System.out.println("bike has 2 seat");}
+public void brakes() {System.out.println("bike brakes are proper");}
+}
+
+class Bicycle implements Vehicle{
+public void tyre() {System.out.println("bicycle tyre is full");}
+public void seat() {System.out.println("bicycle has seat");}
+public void brakes() {System.out.println("bicycle brakes are proper");}
+}
+
+class Car implements Vehicle{
+public void tyre() {System.out.println("tyre of car is full");}
+public void seat() {System.out.println("car has 4 seats");}
+public void brakes() {System.out.println("car brakes are proper");}
+}
+
+class Auto{
+public static void main(String args[]){
+Bike a=new Bike();
+a.tyre();
+a.seat();
+a.brakes();
+Bicycle b=new Bicycle();
+b.tyre();
+b.seat();
+b.brakes();
+Car c=new Car();
+c.tyre();
+c.seat();
+c.brakes();
+}}
+
+
+
+
+
+
+
+
+
+
+
+
+MULTIPLE INTERFACE:
+//SALONI MORE -S21 (81)
+
+interface A{
+void a();
+void b();
+void c();
+void d();
+}
+
+class M implements A{
+public void a() {System.out.println("I am a");}
+public void b() {System.out.println("I am b");}
+public void c() {System.out.println("I am c");}
+public void d() {System.out.println("I am d");}
+}
+
+class Int1{
+public static void main(String args[]){
+M a=new M();
+a.a();
+a.b();
+a.c();
+a.d();
+}}

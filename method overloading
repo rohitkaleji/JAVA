@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class methodover {
+    public static void main(String args[]) {
+        int length, breadth, radius;
+        Scanner sc = new Scanner(System.in);
+
+    //Area of Rectangle
+     System.out.println("Enter length of rectangle : "); 
+	 length = sc.nextInt();
+	 
+     System.out.println("Enter breadth of rectangle: ");
+	 breadth = sc.nextInt();
+
+     cal(length, breadth);
+
+    //Area of Circle
+     System.out.println("Enter radius of circle: ");
+     radius = sc.nextInt();
+
+     cal (radius);
+
+     sc.close();
+    }
+
+   public static void cal(int l, int b) {
+     double area = l*b; 
+     System.out.println("Area of rectangle is " +area);
+	}
+	
+	public static void cal(int r) {
+	  double area = 3.14*r*r; 
+     System.out.println("Area of circle is " +area);
+	}
+	}

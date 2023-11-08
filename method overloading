@@ -11,13 +11,11 @@ public class methodover {
 	 
      System.out.println("Enter breadth of rectangle: ");
 	 breadth = sc.nextInt();
-
      cal(length, breadth);
 
     //Area of Circle
      System.out.println("Enter radius of circle: ");
      radius = sc.nextInt();
-
      cal (radius);
 
      sc.close();

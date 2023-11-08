@@ -1,0 +1,183 @@
+class hello extends Thread
+{
+public void run()
+{
+for (int i=0;i<10;i++)
+{
+Thread t1= Thread.currentThread();
+System.out.println(t1.getName());
+System.out.println("hello");
+//if (i==2)
+//stop();
+try
+{
+Thread.sleep(500);
+}
+catch(Exception e){};
+}
+}
+}
+
+
+class hi extends Thread
+{
+public void run(){
+for (int i=0;i<5;i++)
+{
+Thread t2= Thread.currentThread();
+System.out.println(t2.getName());
+System.out.println("hi");
+try
+{
+Thread.sleep(500);
+}
+catch(Exception e){};
+}
+}
+}
+
+
+
+
+class MultithreadingDemo3
+{
+public static void main(String args[])
+{
+  hi obj1=new hi();
+  hello obj2=new hello();
+  
+  obj1.start();
+  obj2.start();
+  
+  
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+class a extends Thread
+{
+public void run()
+{
+for (int i=0;i<6;i++)
+{
+Thread t1= Thread.currentThread();
+System.out.println(t1.getName());
+System.out.println("5x" +i+ "=" +5*i);
+//if (i==2)
+//stop();
+try
+{
+Thread.sleep(500);
+}
+catch(Exception e){};
+}
+}
+}
+
+
+class b extends Thread
+{
+public void run(){
+for (int i=0;i<5;i++)
+{
+Thread t2= Thread.currentThread();
+System.out.println(t2.getName());
+System.out.println("7x" +i+ "=" +7*i);
+try
+{
+Thread.sleep(1000);
+}
+catch(Exception e){};
+}
+}
+}
+
+
+class MultithreadingDemo4
+{
+public static void main(String args[])
+{
+  a obj1=new a();
+  b obj2=new b();
+  
+  obj1.start();
+  obj2.start();
+  
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+class hello implements Runnable {
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("hello");
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {
+            }
+        }
+    }
+}
+
+class hi extends Thread {
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("hi");
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {
+            }
+        }
+    }
+}
+
+class MultithreadingDemo5 {
+    public static void main(String args[]) {
+        hi obj1 = new hi();
+        hello obj2 = new hello();
+
+        Thread t1 = new Thread(obj1);
+        Thread t2 = new Thread(obj2);
+
+        t1.start();
+        t2.start();
+
+        System.out.println(t1.isAlive());
+        System.out.println(t2.isAlive());
+
+        try {
+            t1.join();
+        } catch (Exception e) {
+        }
+        try {
+            t2.join();
+        } catch (Exception e) {
+        }
+
+        System.out.println(t1.isAlive());
+        System.out.println(t2.isAlive());
+
+        System.out.println("bye bye");
+    }
+}

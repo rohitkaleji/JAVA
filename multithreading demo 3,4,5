@@ -65,8 +65,6 @@ for (int i=0;i<6;i++)
 Thread t1= Thread.currentThread();
 System.out.println(t1.getName());
 System.out.println("5x" +i+ "=" +5*i);
-//if (i==2)
-//stop();
 try
 {
 Thread.sleep(500);

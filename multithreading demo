@@ -1,0 +1,15 @@
+//method 1: thread creation by extending thread class
+
+class MultithreadingDemo extends Thread
+{
+public void run()
+{
+System.out.println("my thread is in running state.") ;
+System.out.println("******************************") ;
+}
+public static void main(String args[])
+{
+MultithreadingDemo obj=new MultithreadingDemo();
+obj.start();
+}
+}

@@ -1,0 +1,28 @@
+public class MagazineApp {
+    public static void main(String[] args) {
+        Magazine obj = new Magazine();
+        obj.displayBookInfo("Vogue", "Anonymous", 49.99);
+    }
+}
+
+class Book {
+    public void displayBookInfo(String bookname, String authorname, double price) {
+        System.out.println("Name: " + bookname + "\nAuthor: " + authorname + "\nPrice: " + price);
+    }
+}
+
+class ReferenceBook extends Book {
+    @Override
+    public void displayBookInfo(String bookname, String authorname, double price) {
+        System.out.println("\nReference Book");
+        System.out.println("Name: " + bookname + "\nAuthor: " + authorname + "\nPrice: " + price);
+    }
+}
+
+class Magazine extends Book {
+    @Override
+    public void displayBookInfo(String bookname, String authorname, double price) {
+        System.out.println("\nMagazine");
+        System.out.println("Name: " + bookname + "\nAuthor: " + authorname + "\nPrice: " + price);
+    }
+}

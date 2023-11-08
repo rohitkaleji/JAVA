@@ -7,8 +7,6 @@ for (int i=0;i<10;i++)
 Thread t1= Thread.currentThread();
 System.out.println(t1.getName());
 System.out.println("hello");
-//if (i==2)
-//stop();
 try
 {
 Thread.sleep(500);
@@ -17,7 +15,6 @@ catch(Exception e){};
 }
 }
 }
-
 
 class hi extends Thread
 {
@@ -36,9 +33,6 @@ catch(Exception e){};
 }
 }
 
-
-
-
 class MultithreadingDemo3
 {
 public static void main(String args[])
@@ -47,9 +41,7 @@ public static void main(String args[])
   hello obj2=new hello();
   
   obj1.start();
-  obj2.start();
-  
-  
+  obj2.start();  
 }
 }
 
@@ -83,7 +75,6 @@ catch(Exception e){};
 }
 }
 }
-
 
 class b extends Thread
 {

@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Salaries {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int empno, empsal, CCA, PT;
+        double DA, HRA, PF, gross;
+        String empname;
+
+        System.out.println("Enter employee name: ");
+        empname = sc.nextLine();
+        System.out.println("Enter employee ID: ");
+        empno = sc.nextInt();
+        System.out.println("Enter employee salary: ");
+        empsal = sc.nextInt();
+
+        DA = 0.7 * empsal;
+        HRA = 0.3 * empsal;
+        PF = 0.1 * empsal;
+        CCA = 240;
+        PT = 100;
+
+        gross = empsal + DA + HRA + CCA - PF - PT;
+        System.out.println("The gross salary of " + empname + " is " + gross);
+    }
+}

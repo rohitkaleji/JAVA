@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Book {
+    public static void display(String name, String author, int id) {
+        System.out.println("This is a Book class. Book is " + name + ". Author is " + author + ". Book ID is " + id);
+    }
+}
+
+class FBook extends Book {
+    public static void display() {
+        System.out.println("This is a FBook class.");
+        display("E.P", "I.A.Shaikh", 43523);
+    }
+}
+
+class SBook extends Book {
+    public static void display() {
+        System.out.println("This is a SBook class.");
+        display("Vogue", "xyz", 56784);
+    }
+}
+
+class BookDisplay {
+    public static void main(String[] args) {
+        FBook fb = new FBook();
+        SBook sb = new SBook();
+        fb.display();
+        sb.display();
+    }
+}

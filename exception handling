@@ -1,7 +1,7 @@
 public class TryCatchExample1 {
     public static void main(String[] args) {
         try {
-            int data = 50 / 0; // may throw exception
+            int data = 50 / 0;
             System.out.println("Result: " + data); 
         } catch (ArithmeticException e) {
             System.out.println("An arithmetic exception occurred: " + e.getMessage());

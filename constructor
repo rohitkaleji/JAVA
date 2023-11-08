@@ -1,0 +1,109 @@
+class Adder{
+static int add(int a,int b)
+{return a+b;}
+static int add(int a,int b,int c)
+{return a+b+c;}
+}
+class Test{
+public static void main(String args[])
+{
+System.out.println(Adder.add(11,11));
+System.out.println(Adder.add(11,11,11));
+}
+}
+
+
+
+
+
+
+
+
+class Test2{
+
+Test2()
+{
+System.out.println("Default constructor");
+}
+Test2(int a,int b)
+{
+int y=a+b;
+System.out.println(y);
+}
+Test2(int a,int b,int c)
+{
+int y=a+b+c;
+System.out.println(y);
+}
+public static void main(String[] args)
+{
+Test2 obj=new Test2();
+Test2 obj1=new Test2(5,4);
+Test2 obj2=new Test2(5,4,3);
+}
+}
+
+
+
+
+
+
+class Adder{
+static int add(int a,int b){return a+b;}
+static int add(int a,int b,int c){return a+b+c;}
+}
+class Test3{
+public static void main(String[] args){
+Adder obj=new Adder();
+System.out.println(obj.add(11,11));
+System.out.println(obj.add(11,11,11));
+}
+}
+
+
+
+
+class TestFinallyBlock {
+ public static void main(String args[]){
+
+try{ 
+
+ int data=25/0;
+ System.out.println(data);
+}
+catch(NullPointerException e) {
+System.out.println(e);
+}
+//executed regardless of exception occurred or not 
+finally { 
+System.out.println("finally block is always executed");
+}
+System.out.println("rest of the code...");
+}
+}
+
+
+
+
+
+
+public class TestThrow1 {
+
+//function to check if person is eligible to vote or not
+    public static void validate(int age)   {
+    if(age<18)
+    try {
+    //throw Arithmetic exception if not eligible to vote
+    throw new ArithmeticException("Person is not eligible to vote");
+}
+    catch(ArithmeticException e) { 
+	   System.out.println(e);
+  }
+  }
+//main method
+   public static void main(String args[]){
+     //calling the function
+   validate(13);
+   System.out.println("rest of the code...");
+   }
+   }

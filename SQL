@@ -1,0 +1,996 @@
+Create table Client_master
+(
+Client_no varchar(6), 
+Name varchar(20) NOT NULL, 
+Address1 varchar (30), 
+Address2 varchar(30),
+City varchar(15), 
+State varchar(15), 
+Pincode int(6), 
+Bal_due float(10,2),
+primary key(Client_no),
+CHECK (Client_no like 'C%')
+);
+
+insert into Client_master(Client_no,Name,City,State,Pincode,Bal_due)values('C00001','Ivan 
+Bayross','Bombay','Maharashtra',400054,15000);
+
+insert into Client_master(Client_no,Name,City,State,Pincode,Bal_due)values('C00002','Vandana 
+Saitwal','Madras','Tamil Nadu',780001,0);
+
+insert into Client_master(Client_no,Name,City,State,Pincode,Bal_due)values('C00003','Pramada 
+Jaguste','Bombay','Maharashtra',400057,5000);
+
+insert into Client_master(Client_no,Name,City,State,Pincode,Bal_due)values('C00004','Basu 
+Navindgi','Bombay','Maharashtra',400056,0);
+
+insert into Client_master(Client_no,Name,City,State,Pincode,Bal_due)values('C00005','Ravi 
+Sreedharan','Delhi','',100001,2000);
+
+insert into Client_master(Client_no,Name,City,State,Pincode,Bal_due) 
+values('C00006','Rukmini','Bombay','Maharashtra',400050,15000);
+
+select * from Client_master;
+
++-----------+-----------------+----------+----------+--------+-------------+---------+----------+
+| Client_no | Name            | Address1 | Address2 | City   | State       | Pincode | Bal_due  |
++-----------+-----------------+----------+----------+--------+-------------+---------+----------+
+| C00001    | Ivan Bayross    | NULL     | NULL     | Bombay | Maharashtra |  400054 | 15000.00 |
+| C00002    | Vandana Saitwal | NULL     | NULL     | Madras | Tamil Nadu  |  780001 |     0.00 |
+| C00003    | Pramada Jaguste | NULL     | NULL     | Bombay | Maharashtra |  400057 |  5000.00 |
+| C00004    | Basu Navindgi   | NULL     | NULL     | Bombay | Maharashtra |  400056 |     0.00 |
+| C00005    | Ravi Sreedharan | NULL     | NULL     | Delhi  |             |  100001 |  2000.00 |
+| C00006    | Rukmini         | NULL     | NULL     | Bombay | Maharashtra |  400050 | 15000.00 |
++-----------+-----------------+----------+----------+--------+-------------+---------+----------+
+
+-------------------------------------------------------------------------------------------------------------------
+
+create table product_master
+(
+Product_no varchar(6), 
+Description varchar(25) NOT NULL,
+Profit_percent float(5,2) NOT NULL,
+Unit_measure varchar(10) NOT NULL, 
+Qty_on_hand int(8), 
+Reorder_lvl int(8) NOT NULL, 
+Sell_price float(8,2) NOT NULL CHECK(Sell_price<>0),
+Cost_price float(8,2) NOT NULL CHECK(Cost_price<>0),
+primary key(Product_no),
+CHECK (Product_no like 'P%')
+);
+
+insert into product_master values('P00001','1.44 Floppies',5,'Piece',100,20,525,500);
+insert into product_master values('P03453','Monitors',6,'Piece',10,3,12000,11280);
+insert into product_master values('P06734','Mouse',5,'Piece',20,5,1050,1000);
+insert into product_master values('P07865','1.22 Floppies',5,'Piece',100,20,525,500);
+insert into product_master values('P07868','Keyboards',2,'Piece',10,3,3150,3050);
+insert into product_master values('P07885','CD Drive',2.5,'Piece',10,3,5250,5100);
+insert into product_master values('P07965','HDD',4,'Piece',10,3,8400,8000);
+insert into product_master values('P07975','1.44 Drive',5,'Piece',10,3,1050,1000);
+insert into product_master values('P08865','1.22 Drive',5,'Piece',2,3,1050,1000);
+
+select * from product_master;
+
++------------+---------------+----------------+--------------+-------------+-------------+------------+------------+
+| Product_no | Description   | Profit_percent | Unit_measure | Qty_on_hand | Reorder_lvl | Sell_price | Cost_price |
++------------+---------------+----------------+--------------+-------------+-------------+------------+------------+
+| P00001     | 1.44 Floppies |           5.00 | Piece        |         100 |          20 |     525.00 |     500.00 |
+| P03453     | Monitors      |           6.00 | Piece        |          10 |           3 |   12000.00 |   11280.00 |
+| P06734     | Mouse         |           5.00 | Piece        |          20 |           5 |    1050.00 |    1000.00 |
+| P07865     | 1.22 Floppies |           5.00 | Piece        |         100 |          20 |     525.00 |     500.00 |
+| P07868     | Keyboards     |           2.00 | Piece        |          10 |           3 |    3150.00 |    3050.00 |
+| P07885     | CD Drive      |           2.50 | Piece        |          10 |           3 |    5250.00 |    5100.00 |
+| P07965     | HDD           |           4.00 | Piece        |          10 |           3 |    8400.00 |    8000.00 |
+| P07975     | 1.44 Drive    |           5.00 | Piece        |          10 |           3 |    1050.00 |    1000.00 |
+| P08865     | 1.22 Drive    |           5.00 | Piece        |           2 |           3 |    1050.00 |    1000.00 |
++------------+---------------+----------------+--------------+-------------+-------------+------------+------------+
+
+------------------------------------------------------------------------------------------------------------------
+
+create table salesman_master 
+(
+Salesman_no varchar(6),
+Salesman_name varchar(20)NOT NULL,
+Address1 varchar(30)NOT NULL,
+Address2 varchar(30),
+City varchar(20),
+Pincode varchar(6),
+State varchar(20),
+Sal_amt float(8,2)NOT NULL CHECK(Sal_amt<>0),
+Tgt_to_get float(6,2)NOT NULL CHECK(Tgt_to_get<>0),
+Ytd_sales float(6,2)NOT NULL,Remarks varchar(60),
+primary key(Salesman_no),CHECK (Salesman_no like 'S%'));
+
+
+insert into salesman_master values('S00001', 'Kiran', 'A/14', 'Worli', 'Bombay', '400002', 'MAH', 3000, 
+100, 50,'Good');
+insert into salesman_master values('S00002', 'Manish', '65', 'Nariman', 'Bombay', '400001', 'MAH', 3000, 
+200, 100,'Good');
+insert into salesman_master  values('S00003', 'Ravi', 'P-7', 'Bandra', 'Bombay', '400032', 'MAH', 3000, 200, 
+100,'Good');
+insert into salesman_mastervalues('S00004', 'Ashish', 'A/5', 'Juhu', 'Bombay', '400044', 'MAH', 3000, 
+200, 150,'Good');
+
+
+ select * from salesman_master;
++-------------+---------------+----------+----------+--------+---------+-------+---------+------------+-----------+---------+
+| Salesman_no | Salesman_name | Address1 | Address2 | City   | Pincode | State | Sal_amt | Tgt_to_get | Ytd_sales | Remarks |
++-------------+---------------+----------+----------+--------+---------+-------+---------+------------+-----------+---------+
+| S00001      | Kiran         | A/14     | Worli    | Bombay | 400002  | MAH   | 3000.00 |     100.00 |     50.00 | Good    |
+| S00002      | Manish        | 65       | Nariman  | Bombay | 400001  | MAH   | 3000.00 |     200.00 |    100.00 | Good    |
+| S00003      | Ravi          | P-7      | Bandra   | Bombay | 400032  | MAH   | 3000.00 |     200.00 |    100.00 | Good    |
++-------------+---------------+----------+----------+--------+---------+-------+---------+------------+-----------+---------+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+create table sales_order
+(
+S_order_no varchar(6) primary key,
+S_order_date date, 
+Client_no varchar(6), foreign key(Client_no) references Client_master (Client_no),
+Dely_addr varchar(25),
+Salesman_no varchar(6) ,foreign key(Salesman_no ) references salesman_master (Salesman_no ),
+Dely_type char(1) ,CHECK(Dely_type in ('P','F','D')) ,
+Billed_yn char(1),
+Dely_date date ,CHECK (Dely_date>=S_order_date),
+Order_status varchar(10) ,CHECK(order_status in('IP','F','B','C'))
+
+);
+
+
+insert into sales_order (S_order_no,S_order_date,Client_no,Salesman_no,Dely_type,Billed_yn,Dely_date,Order_status) values('O19001','1996-01-12','C00001','S00001','F','N','1996-01-20','IP');
+
+insert into sales_order(S_order_no,S_order_date,Client_no,Salesman_no,Dely_type,Billed_yn,Dely_date,Order_status) values('O19002','1996-01-25','C00002','S00002','P','N','1996-01-27','C');
+insert into 
+sales_order(S_order_no,S_order_date,Client_no,Salesman_no,Dely_type,Billed_yn,Dely_date,Order_status) values('O46865','1996-02-18','C00003','S00003','F','Y','1996-02-20','F');
+insert into 
+sales_order(S_order_no,S_order_date,Client_no,Salesman_no,Dely_type,Billed_yn,Dely_date,Order_status) values('O19003','1996-04-03','C00001','S00001','F','Y','1996-04-07','F');
+insert into 
+sales_order(S_order_no,S_order_date,Client_no,Salesman_no,Dely_type,Billed_yn,Dely_date,Order_status) values('O46866','1996-05-20','C00004','S00002','P','N','1996-05-22','C');
+insert into 
+sales_order(S_order_no,S_order_date,Client_no,Salesman_no,Dely_type,Billed_yn,Dely_date,Order_status) values('O10008','1996-05-24','C00005','S00004','F','N','1996-05-26','IP');
+
+
+select * from sales_order;
++------------+--------------+-----------+-----------+-------------+-----------+-----------+------------+--------------+
+| S_order_no | S_order_date | Client_no | Dely_addr | Salesman_no | Dely_type | Billed_yn | Dely_date  | Order_status |
++------------+--------------+-----------+-----------+-------------+-----------+-----------+------------+--------------+
+| O19001     | 1996-01-12   | C00001    | NULL      | S00001      | F         | N         | 1996-01-20 | IP           |
+| O19002     | 1996-01-25   | C00002    | NULL      | S00002      | P         | N         | 1996-01-27 | C            |
+| O19003     | 1996-04-03   | C00001    | NULL      | S00001      | F         | Y         | 1996-04-07 | F            |
+| O46865     | 1996-02-18   | C00003    | NULL      | S00003      | F         | Y         | 1996-02-20 | F            |
+| O46866     | 1996-05-20   | C00004    | NULL      | S00002      | P         | N         | 1996-05-22 | C            |
++------------+--------------+-----------+-----------+-------------+-----------+-----------+------------+--------------+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+find out the name of all the clients
+=> select name from Client_master;
++-----------------+
+| name            |
++-----------------+
+| Ivan Bayross    |
+| Vandana Saitwal |
+| Pramada Jaguste |
+| Basu Navindgi   |
+| Ravi Sreedharan |
+| Rukmini         |
++-----------------+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+print enitre client master table
+=> select * from Client_master;
+
++-----------+-----------------+----------+----------+--------+-------------+---------+----------+
+| Client_no | Name            | Address1 | Address2 | City   | State       | Pincode | Bal_due  |
++-----------+-----------------+----------+----------+--------+-------------+---------+----------+
+| C00001    | Ivan Bayross    | NULL     | NULL     | Bombay | Maharashtra |  400054 | 15000.00 |
+| C00002    | Vandana Saitwal | NULL     | NULL     | Madras | Tamil Nadu  |  780001 |     0.00 |
+| C00003    | Pramada Jaguste | NULL     | NULL     | Bombay | Maharashtra |  400057 |  5000.00 |
+| C00004    | Basu Navindgi   | NULL     | NULL     | Bombay | Maharashtra |  400056 |     0.00 |
+| C00005    | Ravi Sreedharan | NULL     | NULL     | Delhi  |             |  100001 |  2000.00 |
+| C00006    | Rukmini         | NULL     | NULL     | Bombay | Maharashtra |  400050 | 15000.00 |
++-----------+-----------------+----------+----------+--------+-------------+---------+----------+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+retrive the list of name and cities of all the clients
+=> select name, city from Client_master;
++-----------------+--------+
+| name            | city   |
++-----------------+--------+
+| Ivan Bayross    | Bombay |
+| Vandana Saitwal | Madras |
+| Pramada Jaguste | Bombay |
+| Basu Navindgi   | Bombay |
+| Ravi Sreedharan | Delhi  |
+| Rukmini         | Bombay |
++-----------------+--------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+list the various products available from product master
+=> select description from product_master;
++---------------+
+| description   |
++---------------+
+| 1.44 Floppies |
+| Monitors      |
+| Mouse         |
+| 1.22 Floppies |
+| Keyboards     |
+| CD Drive      |
+| HDD           |
+| 1.44 Drive    |
+| 1.22 Drive    |
++---------------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+find out name of all the clients having a as second letter in their name from client master
+=> select name from client_master where Client_name like'_a%';
+
++--------+-----------------+
+| city   | name            |
++--------+-----------------+
+| Madras | Vandana Saitwal |
+| Bombay | Basu Navindgi   |
+| Delhi  | Ravi Sreedharan |
++--------+-----------------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ find ouut the name of the client who stay in city whose 2nd letter is a
+=> select name, city from client_master where City line'_a%';
+
++--------+-----------------+
+| city   | name            |
++--------+-----------------+
+| Madras | Vandana Saitwal |
++--------+-----------------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+find out the list of all the clients who stay in delhi, bombay or madras use logivcal operator
+=> select name, city from Client_master where city='bombay' or city= 'delhi'or city='madras';
++-----------------+--------+
+| name            | city   |
++-----------------+--------+
+| Ivan Bayross    | Bombay |
+| Vandana Saitwal | Madras |
+| Pramada Jaguste | Bombay |
+| Basu Navindgi   | Bombay |
+| Ravi Sreedharan | Delhi  |
+| Rukmini         | Bombay |
++-----------------+--------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+=>select name, city from Client_master where city in('bombay','delhi','madras');
++-----------------+--------+
+| name            | city   |
++-----------------+--------+
+| Ivan Bayross    | Bombay |
+| Vandana Saitwal | Madras |
+| Pramada Jaguste | Bombay |
+| Basu Navindgi   | Bombay |
+| Ravi Sreedharan | Delhi  |
+| Rukmini         | Bombay |
++-----------------+--------+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+print the list of clients whose bal_due are greater than 10k
+=> select name, bal_due from Client_master where (bal_due>100000);
+
++--------------+----------+
+| name         | bal_due  |
++--------------+----------+
+| Ivan Bayross | 15000.00 |
+| Rukmini      | 15000.00 |
++--------------+----------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+print the information from the sales order table for order placed in the month of january
+=> select * from sales_order where s_order_date like '%-01-%';
++------------+--------------+-----------+-----------+-------------+-----------+-----------+------------+--------------+
+| S_order_no | S_order_date | Client_no | Dely_addr | Salesman_no | Dely_type | Billed_yn | Dely_date  | Order_status |
++------------+--------------+-----------+-----------+-------------+-----------+-----------+------------+--------------+
+| O19001     | 1996-01-12   | C00001    | NULL      | S00001      | F         | N         | 1996-01-20 | IP           |
+| O19002     | 1996-01-25   | C00002    | NULL      | S00002      | P         | N         | 1996-01-27 | C            |
++------------+--------------+-----------+-----------+-------------+-----------+-----------+------------+--------------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+display order information for the client_no c00001 and c00002
+=> select * from Client_master where client_no='c00001' or client_no='c00002';
++-----------+-----------------+----------+----------+--------+-------------+---------+----------+
+| Client_no | Name            | Address1 | Address2 | City   | State       | Pincode | Bal_due  |
++-----------+-----------------+----------+----------+--------+-------------+---------+----------+
+| C00001    | Ivan Bayross    | NULL     | NULL     | Bombay | Maharashtra |  400054 | 15000.00 |
+| C00002    | Vandana Saitwal | NULL     | NULL     | Madras | Tamil Nadu  |  780001 |     0.00 |
++-----------+-----------------+----------+----------+--------+-------------+---------+----------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+find the product with description as 1.44 drive, 1.22 drive
+=> select product_no, description from product_master where description='1.44 drive' or description='1.22 drive';
++------------+-------------+
+| product_no | description |
++------------+-------------+
+| P07975     | 1.44 Drive  |
+| P08865     | 1.22 Drive  |
++------------+-------------+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+create table sales_order_details
+(
+S_order_no varchar(6),
+Product_no varchar(6),
+Qty_ordered int(8),
+Qty_disp int(8),
+Product_rate float(10,2),
+primary key(S_order_no,Product_no),
+foreign key(S_order_no)references sales_order(S_order_no),
+foreign key(Product_no)references product_master(Product_no)
+);
+
+
+insert into sales_order_details values ('O19001', 'P00001', 4,4,525);
+insert into sales_order_details values ('O19001', 'P07965', 2,1,8400);
+insert into sales_order_details values ('O19001', 'P07885', 2,1,5250);
+insert into sales_order_details values ('O19002', 'P00001', 10,0,525);
+insert into sales_order_details values ('O46865', 'P07868', 3,3,3150);
+insert into sales_order_details values ('O46865', 'P07885', 3,1,5250);
+insert into sales_order_details values ('O46865', 'P00001', 10,10,525);
+insert into sales_order_details values ('O46865', 'P03453', 4,4,1050);
+insert into sales_order_details values ('O19003', 'P03453', 2,2,1050);
+insert into sales_order_details values ('O19003', 'P06734', 1,1,12000);
+insert into sales_order_details values ('O46866', 'P07965', 1,0,8400);
+insert into sales_order_details values ('O46866', 'P07975', 1,0,1050);
+insert into sales_order_details values ('O10008', 'P00001', 10,5,525);
+insert into sales_order_details values ('O10008', 'P07975', 5,3,1050);
+
++------------+------------+-------------+----------+--------------+
+| S_order_no | Product_no | Qty_ordered | Qty_disp | Product_rate |
++------------+------------+-------------+----------+--------------+
+| O19001     | P00001     |           4 |        4 |       525.00 |
+| O19001     | P07885     |           2 |        1 |      5250.00 |
+| O19001     | P07965     |           2 |        1 |      8400.00 |
+| O19002     | P00001     |          10 |        0 |       525.00 |
+| O19003     | P03453     |           2 |        2 |      1050.00 |
+| O19003     | P06734     |           1 |        1 |     12000.00 |
+| O46865     | P00001     |          10 |       10 |       525.00 |
+| O46865     | P03453     |           4 |        4 |      1050.00 |
+| O46865     | P07868     |           3 |        3 |      3150.00 |
+| O46865     | P07885     |           3 |        1 |      5250.00 |
+| O46866     | P07965     |           1 |        0 |      8400.00 |
+| O46866     | P07975     |           1 |        0 |      1050.00 |
++------------+------------+-------------+----------+--------------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+create table Challan_Header
+(
+Challan_no varchar(6), 
+S_order_no varchar(6),
+Challan_date date NOT NULL,
+Billed_yn char(1) DEFAULT ('N') check(Billed_yn in ('Y','N')),
+foreign key (S_order_no) references sales_order(S_order_no),
+primary key(Challan_no)
+);
+
+insert into Challan_Header values ('CH9001', 'O19001', '1995-12-12', 'Y');
+insert into Challan_Header values ('CH6865', 'O46865', '1995-11-12', 'Y');
+insert into Challan_Header values ('CH3965', 'O10008', '1995-11-12', 'Y');*****
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+create table Challan_details
+(
+Challan_no varchar(6) ,
+Product_no varchar(6) , 
+Qty_disp int(8), 
+primary key(Qty_disp) ,
+foreign key(Challan_no) references Challan_Header(Challan_no),
+foreign key(Product_no) references product_master(Product_no)
+);
+
+
+insert into Challan_details values('CH9001', 'P00001', 4);
+insert into Challan_details values('CH9001', 'P07965', 1);
+insert into Challan_details values('CH6865', 'P07868', 3);
+insert into Challan_details values('CH6865', 'P00001', 10);
+insert into Challan_details values('CH3965', 'P00001', 5);***
+insert into Challan_details values('CH3965', 'P07975', 2);***
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+find the product whose selling price is >2000 or less than equal to 5k use between operator
+=> select product_no, description,sell_price from product_master where sell_price between 2000 and 5000;
+
++------------+-------------+------------+
+| product_no | description | sell_price |
++------------+-------------+------------+
+| P07868     | Keyboards   |    3150.00 |
++------------+-------------+------------+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+find the product whose selling price is more than 1500 and also find the new selling price as original multiplied by 15.
+=> select product_no,description,sell_price from product_master where sell_price>1500;
+
++------------+-------------+------------+
+| product_no | description | sell_price |
++------------+-------------+------------+
+| P03453     | Monitors    |   12000.00 |
+| P07868     | Keyboards   |    3150.00 |
+| P07885     | CD Drive    |    5250.00 |
+| P07965     | HDD         |    8400.00 |
++------------+-------------+------------+
+=> select product_no,description,sell_price, sell_price*15 as original_price from product_master where sell_price>1500;
+
++------------+-------------+------------+----------------+
+| product_no | description | sell_price | original_price |
++------------+-------------+------------+----------------+
+| P03453     | Monitors    |   12000.00 |      180000.00 |
+| P07868     | Keyboards   |    3150.00 |       47250.00 |
+| P07885     | CD Drive    |    5250.00 |       78750.00 |
+| P07965     | HDD         |    8400.00 |      126000.00 |
++------------+-------------+------------+----------------+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+rename the original price as new_price
+=>select product_no,description,sell_price, sell_price*15 as new_price from product_master where sell_price>1500;
++------------+-------------+------------+-----------+
+| product_no | description | sell_price | new_price |
++------------+-------------+------------+-----------+
+| P03453     | Monitors    |   12000.00 | 180000.00 |
+| P07868     | Keyboards   |    3150.00 |  47250.00 |
+| P07885     | CD Drive    |    5250.00 |  78750.00 |
+| P07965     | HDD         |    8400.00 | 126000.00 |
++------------+-------------+------------+-----------+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+find the product whose cost_price is less than 1500
+=>select product_no,description,cost_price from product_master where cost_price<1500;
++------------+---------------+------------+
+| product_no | description   | cost_price |
++------------+---------------+------------+
+| P00001     | 1.44 Floppies |     500.00 |
+| P06734     | Mouse         |    1000.00 |
+| P07865     | 1.22 Floppies |     500.00 |
+| P07975     | 1.44 Drive    |    1000.00 |
+| P08865     | 1.22 Drive    |    1000.00 |
++------------+---------------+------------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+list the products in the sorted order of their dsescription
+=>select description from product_master order by ASC description;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------1
+
+calculate the square root of the price of each product
+=> select  product_no,description,cost_price,sqrt(cost_price) as sq_cost_price from product_master ;
++------------+---------------+------------+--------------------+
+| product_no | description   | cost_price | sq_cost_price      |
++------------+---------------+------------+--------------------+
+| P00001     | 1.44 Floppies |     500.00 | 22.360679774997898 |
+| P03453     | Monitors      |   11280.00 | 106.20734437881403 |
+| P06734     | Mouse         |    1000.00 | 31.622776601683793 |
+| P07865     | 1.22 Floppies |     500.00 | 22.360679774997898 |
+| P07868     | Keyboards     |    3050.00 | 55.226805085936306 |
+| P07885     | CD Drive      |    5100.00 |   71.4142842854285 |
+| P07965     | HDD           |    8000.00 |  89.44271909999159 |
+| P07975     | 1.44 Drive    |    1000.00 | 31.622776601683793 |
+| P08865     | 1.22 Drive    |    1000.00 | 31.622776601683793 |
++------------+---------------+------------+--------------------+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+divide the cost of the product hdd by the difference between its price and hundred
+=>select cost_price/(cost_price-100) as difference from product_master;
++------------+
+| difference |
++------------+
+|   1.250000 |
+|   1.008945 |
+|   1.111111 |
+|   1.250000 |
+|   1.033898 |
+|   1.020000 |
+|   1.012658 |
+|   1.111111 |
+|   1.111111 |
++------------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+list the name, city,state of the client not in the state of maharashtra
+=>select name,city,state from client_master where not(state='maharashtra');
++-----------------+--------+------------+
+| name            | city   | state      |
++-----------------+--------+------------+
+| Vandana Saitwal | Madras | Tamil Nadu |
+| Ravi Sreedharan | Delhi  |            |
++-----------------+--------+------------+
+
+v---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+list the product_no, description,sell_price whose description begin with letter n
+=>select product_no, description,sell_price from product_master where description like 'm%';
++------------+-------------+------------+
+| product_no | description | sell_price |
++------------+-------------+------------+
+| P03453     | Monitors    |   12000.00 |
+| P06734     | Mouse       |    1050.00 |
++------------+-------------+------------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+count the total number of orders from sales_order
+=> select count(*) from sales_order;
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+calculate the avg price of all the product
+=> select avg(sell_price) from product_master;
++-----------------+
+| avg(sell_price) |
++-----------------+
+|     3666.666667 |
++-----------------+
+ select round(avg(sell_price)) from product_master;
++------------------------+
+| round(avg(sell_price)) |
++------------------------+
+|                   3667 |
++------------------------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+calculate the minimum prie of the product sell_price
+=> select min(sell_price) from product_master;
++-----------------+
+| min(sell_price) |
++-----------------+
+|          525.00 |
++-----------------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+determine the max and min price of the product rename them as max price and min price respectively
+=> select max(sell_price) as max_price,min(sell_price) as min_price from product_master;
++-----------+-----------+
+| max_price | min_price |
++-----------+-----------+
+|  12000.00 |    525.00 |
++-----------+-----------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+select count(*) from product_master where sell_price>1500;
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ select * from product_master where qty_on_hand> reorder_lvl;
++------------+---------------+----------------+--------------+-------------+-------------+------------+------------+
+| Product_no | Description   | Profit_percent | Unit_measure | Qty_on_hand | Reorder_lvl | Sell_price | Cost_price |
++------------+---------------+----------------+--------------+-------------+-------------+------------+------------+
+| P00001     | 1.44 Floppies |           5.00 | Piece        |         100 |          20 |     525.00 |     500.00 |
+| P03453     | Monitors      |           6.00 | Piece        |          10 |           3 |   12000.00 |   11280.00 |
+| P06734     | Mouse         |           5.00 | Piece        |          20 |           5 |    1050.00 |    1000.00 |
+| P07865     | 1.22 Floppies |           5.00 | Piece        |         100 |          20 |     525.00 |     500.00 |
+| P07868     | Keyboards     |           2.00 | Piece        |          10 |           3 |    3150.00 |    3050.00 |
+| P07885     | CD Drive      |           2.50 | Piece        |          10 |           3 |    5250.00 |    5100.00 |
+| P07965     | HDD           |           4.00 | Piece        |          10 |           3 |    8400.00 |    8000.00 |
+| P07975     | 1.44 Drive    |           5.00 | Piece        |          10 |           3 |    1050.00 |    1000.00 |
++------------+---------------+----------------+--------------+-------------+-------------+------------+------------+
+
+
+ select count(*) from product_master where qty_on_hand> reorder_lvl;
++----------+
+| count(*) |
++----------+
+|        8 |
++----------+
+
+
+create view client_master_59 as select * from client_master;
+
+
+ create view v3 as select client_master.client_no, product_master.product_no from client_master, product_master;
+
+select * from v3;
++-----------+------------+
+| client_no | product_no |
++-----------+------------+
+| C00006    | P00001     |
+| C00005    | P00001     |
+| C00004    | P00001     |
+| C00003    | P00001     |
+| C00002    | P00001     |
+| C00001    | P00001     |
+| C00006    | P03453     |
+| C00005    | P03453     |
+| C00004    | P03453     |
+| C00003    | P03453     |
+| C00002    | P03453     |
+| C00001    | P03453     |
+| C00006    | P06734     |
+| C00005    | P06734     |
+| C00004    | P06734     |
+| C00003    | P06734     |
+| C00002    | P06734     |
+| C00001    | P06734     |
+| C00006    | P07865     |
+| C00005    | P07865     |
+| C00004    | P07865     |
+| C00003    | P07865     |
+| C00002    | P07865     |
+| C00001    | P07865     |
+| C00006    | P07868     |
+| C00005    | P07868     |
+| C00004    | P07868     |
+| C00003    | P07868     |
+| C00002    | P07868     |
+| C00001    | P07868     |
+| C00006    | P07885     |
+| C00005    | P07885     |
+| C00004    | P07885     |
+| C00003    | P07885     |
+| C00002    | P07885     |
+| C00001    | P07885     |
+| C00006    | P07965     |
+| C00005    | P07965     |
+| C00004    | P07965     |
+| C00003    | P07965     |
+| C00002    | P07965     |
+| C00001    | P07965     |
+| C00006    | P07975     |
+| C00005    | P07975     |
+| C00004    | P07975     |
+| C00003    | P07975     |
+| C00002    | P07975     |
+| C00001    | P07975     |
+| C00006    | P08865     |
+| C00005    | P08865     |
+| C00004    | P08865     |
+| C00003    | P08865     |
+| C00002    | P08865     |
+| C00001    | P08865     |
++-----------+------------+
+
+--------------------------------------------------------------------------------------------------------------------------
+Print the description and total qty sold for each product.
+select s.Product_no,p.Description, sum(s.Qty_ordered) from sales_order_details s, product_master p where p.Product_no=s.Product_no group by s.Product_no,p.Description;
++------------+---------------+--------------------+
+| Product_no | Description   | sum(s.Qty_ordered) |
++------------+---------------+--------------------+
+| P00001     | 1.44 Floppies |                 24 |
+| P07885     | CD Drive      |                  5 |
+| P07965     | HDD           |                  3 |
+| P03453     | Monitors      |                  6 |
+| P06734     | Mouse         |                  1 |
+| P07868     | Keyboards     |                  3 |
+| P07975     | 1.44 Drive    |                  1 |
++------------+---------------+--------------------+
+
+--------------------------------------------------------------------------------------------------------------------------
+Find the value of each product sold
+-> select s.Product_no, p.Description, sum(s.Qty_disp*s.Product_rate) "Sales Per Product" from sales_order_details  s, product_master p where p.Product_no=s.Product_no group by s.Product_no,p.Description;
++------------+---------------+-------------------+
+| Product_no | Description   | Sales Per Product |
++------------+---------------+-------------------+
+| P00001     | 1.44 Floppies |           7350.00 |
+| P07885     | CD Drive      |          10500.00 |
+| P07965     | HDD           |           8400.00 |
+| P03453     | Monitors      |           6300.00 |
+| P06734     | Mouse         |          12000.00 |
+| P07868     | Keyboards     |           9450.00 |
+| P07975     | 1.44 Drive    |              0.00 |
++------------+---------------+-------------------+
+
+--------------------------------------------------------------------------------------------------------------------------
+find out the product which has been sold to 'ivan bayroos'
+-> select d.Product_no,p.Description from sales_order_details d ,product_master p , Client_master c,sales_order  s where p.Product_no=d.Product_no and s.S_order_no=d.S_order_no and c.Client_no=s.Client_no and c.Name='Ivan Bayross';
++------------+---------------+
+| Product_no | Description   |
++------------+---------------+
+| P00001     | 1.44 Floppies |
+| P07885     | CD Drive      |
+| P07965     | HDD           |
+| P03453     | Monitors      |
+| P06734     | Mouse         |
++------------+---------------+
+
+--------------------------------------------------------------------------------------------------------------------------
+find the product_no and description of moving products
+-> select distinct p.Product_no,p.Description from product_master p ,sales_order_details d where p.Product_no=d.Product_no;
++------------+---------------+
+| Product_no | Description   |
++------------+---------------+
+| P00001     | 1.44 Floppies |
+| P03453     | Monitors      |
+| P06734     | Mouse         |
+| P07868     | Keyboards     |
+| P07885     | CD Drive      |
+| P07965     | HDD           |
+| P07975     | 1.44 Drive    |
++------------+---------------+
+
+--------------------------------------------------------------------------------------------------------------------------
+find the names of the clients who have purchased 'CD Drive'.
+->select distinct s.Client_no,c.Name from sales_order_details d,sales_order s,product_master p,Client_master c where p.Product_no=d.Product_no and s.S_order_no=d.S_order_no and c.Client_no=s.Client_no and p.Description='CD Drive';
++-----------+-----------------+
+| Client_no | Name            |
++-----------+-----------------+
+| C00001    | Ivan Bayross    |
+| C00003    | Pramada Jaguste |
++-----------+-----------------+
+
+--------------------------------------------------------------------------------------------------------------------------
+List the product_no and s_order_no of customers having qty_ordered less than 5 from the order detail Table for the product '1.44 Floppies'.
+->select d.Product_no,d.S_order_no from sales_order_details  d,sales_order,product_master p where d.S_order_no=d.S_order_no and p.Product_no=d.Product_no and d.Qty_ordered<5 and p.Description='1.44 Floppies';
++------------+------------+
+| Product_no | S_order_no |
++------------+------------+
+| P00001     | O19001     |
+| P00001     | O19001     |
+| P00001     | O19001     |
+| P00001     | O19001     |
+| P00001     | O19001     |
++------------+------------+
+--------------------------------------------------------------------------------------------------------------------------
+Find the products and their quantities for the orders placed by 'Vandana Saitwal' and 'Ivan Bayross'.
+-> select d.Product_no,p.Description,sum(Qty_ordered)"Qty Ordered" from sales_order_details d,sales_order  s,product_master p,Client_master c where s.S_order_no=d.S_order_no and p.Product_no=d.Product_no and c.Client_no=s.Client_no and (c.name='Ivan Bayross' or c.name='Vandana Saitwal') group by d.Product_no,p.Description;
++------------+---------------+-------------+
+| Product_no | Description   | Qty Ordered |
++------------+---------------+-------------+
+| P00001     | 1.44 Floppies |          14 |
+| P07885     | CD Drive      |           2 |
+| P07965     | HDD           |           2 |
+| P03453     | Monitors      |           2 |
+| P06734     | Mouse         |           1 |
++------------+---------------+-------------+
+
+
+--------------------------------------------------------------------------------------------------------------------------
+Find the products and their quantities for the orders placed by client_no'C00001' and 'C00002'.
+-> select s.Client_no,d.Product_no,p.Description ,sum(Qty_ordered)"Qty_ordered"from sales_order s, sales_order_details d,product_master p,Client_master c where s.s_order_no=d.s_order_no and d.Product_no=p.Product_no and s.Client_no=c.Client_no group by s.Client_no,d.Product_no,p.Description having s.Client_no='C00001' or s.Client_no='C00002';
++-----------+------------+---------------+-------------+
+| Client_no | Product_no | Description   | Qty_ordered |
++-----------+------------+---------------+-------------+
+| C00001    | P00001     | 1.44 Floppies |           4 |
+| C00001    | P07885     | CD Drive      |           2 |
+| C00001    | P07965     | HDD           |           2 |
+| C00001    | P03453     | Monitors      |           2 |
+| C00001    | P06734     | Mouse         |           1 |
+| C00002    | P00001     | 1.44 Floppies |          10 |
++-----------+------------+---------------+-------------+
+6 rows in set (0.00 sec)
+--------------------------------------------------------------------------------------------------------------------------
+Find the product_no and description of non-moving products (eg. products not being sold).
+->select Product_no, Description from product_master where Product_no not in(select Product_no from sales_order_details);
++------------+---------------+
+| Product_no | Description   |
++------------+---------------+
+| P07865     | 1.22 Floppies |
+| P08865     | 1.22 Drive    |
++------------+---------------+
+
+--------------------------------------------------------------------------------------------------------------------------
+Find the customers name ,city and pincode for the client who has placed order no "O19001'.
+-> select Name,Address1,Address2,City,Pincode from Client_master where Client_no in (select Client_no from sales_order  where S_order_no='O19001');
++--------------+----------+----------+--------+---------+
+| Name         | Address1 | Address2 | City   | Pincode |
++--------------+----------+----------+--------+---------+
+| Ivan Bayross | NULL     | NULL     | Bombay |  400054 |
++--------------+----------+----------+--------+---------+
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+delimiter $$
+create trigger tg1
+ before insert on Student
+for each row
+begin
+set new.name= upper(new.name);
+set new.city= upper(new.city);
+end;
+$$
+
+
+
+delimiter $$
+create trigger t2
+after update on person
+for each row
+begin
+insert into audit_log
+values(old.fname,old.lname,new.fname,new.lname,curdate()
+);
+end;
+$$
+
+select * from audit_log;$$
++--------+--------+--------+-------+------------+
+| ofname | olname | nfname | nname | cwhen      |
++--------+--------+--------+-------+------------+
+| pankaj | joshi  | anish  | joshi | 2023-10-05 |
++--------+--------+--------+-------+------------+
+
+select * from person;$$
++-------+-------+----+
+| fname | lname | id |
++-------+-------+----+
+| anish | joshi | 59 |
++-------+-------+----+
+
+DELIMITER $$
+
+CREATE TRIGGER tg1
+BEFORE INSERT ON Student
+FOR EACH ROW
+BEGIN
+    SET NEW.name = UPPER(NEW.name);
+    SET NEW.city = UPPER(NEW.city);
+END;
+
+$$
+
++---------+---------+--------+-------------+
+| roll_no | name    | city   | state       |
++---------+---------+--------+-------------+
+|      56 | SALONI  | MUMBAI | Maharashtra |
+|       1 | KHUSHI  | MUMBAI | maharastra  |
+|       2 | RIYAA   | PUNE   | maharastra  |
+|     123 | JAY     | MUMBAI | maharastra  |
+|       3 | KRISHNA | PUNE   | maharastra  |
+|       4 | KRISHNA | PUNE   | maharastra  |
++---------+---------+--------+-------------+
+
+
+DELIMITER $$
+CREATE TRIGGER t2
+AFTER UPDATE ON person
+FOR EACH ROW
+BEGIN
+    INSERT INTO audit_log VALUES (old.fname, old.lname, new.fname, new.lname, CURDATE());
+END;
+$$
+
+SELECT * FROM audit_log;
++--------+--------+--------+--------+------------+
+| ofname | olname | nfname | nname  | cwhen      |
++--------+--------+--------+--------+------------+
+| Saloni | More   | Kanika | Khurana| 2023-10-05 |
++--------+--------+--------+--------+------------+
+
+
+
+
+CREATE PROCEDURE my_pro(IN client_no INT)
+BEGIN
+    SELECT * FROM client_master LIMIT client_no;
+END;
+
+CALL my_pro(2);
+$$
++-----------+-----------------+----------+----------+--------+------------+---------+---------+
+| client_no | name            | address1 | address2 | city   | state      | pincode | bal_due |
++-----------+-----------------+----------+----------+--------+------------+---------+---------+
+| C00001    | Vandana Saitwal | NULL     | NULL     | Madras | Tamil Nadu | 780001  | 0.00    |
+| C00002    | Vandana Saitwal | NULL     | NULL     | Madras | Tamil Nadu | 780001  | 0.00    |
++-----------+-----------------+----------+----------+--------+------------+---------+---------+
+
+
+
+CREATE PROCEDURE my_pro1(OUT client_no INT)
+BEGIN
+    SELECT COUNT(*) INTO client_no FROM client_master;
+END;
+$$
+
+CALL my_pro1(@a);
+$$
+
+SELECT @a;
+$$
+
++------+
+| @a   |
++------+
+| NULL |
++------+
+
+
+
+CREATE FUNCTION proprice(sell_price DOUBLE)
+RETURNS VARCHAR(20)
+DETERMINISTIC
+BEGIN
+    DECLARE lvl VARCHAR(20);
+    IF sell_price < 1000 THEN
+        SET lvl = 'cheap';
+    ELSEIF sell_price > 3000 THEN
+        SET lvl = 'expensive';
+    END IF;
+    RETURN lvl;
+END;
+$$
+
+
+SELECT Product_no, proprice(sell_price) FROM product_master;
+$$
++------------+----------------------+
+| Product_no | proprice(sell_price) |
++------------+----------------------+
+| P00001     | cheap                |
+| P03453     | expensive            |
+| P06734     | NULL                 |
+| P07865     | cheap                |
+| P07868     | expensive            |
+| P07885     | expensive            |
+| P07965     | expensive            |
+| P07975     | NULL                 |
+| P08865     | NULL                 |
++------------+----------------------+
+
+
+CREATE PROCEDURE build_email_list(INOUT email_list VARCHAR(50))
+BEGIN
+    DECLARE v_finished INTEGER DEFAULT 0;
+    DECLARE v_email VARCHAR(100) DEFAULT "";
+    DECLARE email_cursor CURSOR FOR SELECT email FROM person;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finished = 1;
+
+    OPEN email_cursor;
+    get_email: LOOP
+        FETCH email_cursor INTO v_email;
+        IF v_finished = 1 THEN
+            LEAVE get_email;
+        END IF;
+        SET email_list = CONCAT(v_email, ";", email_list);
+    END LOOP get_email;
+    CLOSE email_cursor;
+END;
+$$
+
+SET @email_list = "";
+CALL build_email_list(@email_list);
+SELECT @email_list;
+$$
+
+
++-------------------------------------------------+
+| @email_list                                     |
++-------------------------------------------------+
+| anvay@gmail.com;anish@gmail.com;aman@gmail.com;  |
++-------------------------------------------------+
+
+
+
+CREATE PROCEDURE build_email_list(INOUT email_list VARCHAR(50))
+BEGIN
+    DECLARE v_finished INTEGER DEFAULT 0;
+    DECLARE v_email VARCHAR(100) DEFAULT "";
+    DECLARE email_cursor CURSOR FOR SELECT email FROM person;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finished = 1;
+
+    OPEN email_cursor;
+    get_email: LOOP
+        FETCH email_cursor INTO v_email;
+        IF v_finished = 1 THEN
+            LEAVE get_email;
+        END IF;
+        SET email_list = CONCAT(v_email, ";", email_list);
+    END LOOP get_email;
+    CLOSE email_cursor;
+END;
+$$
+
+SET @email_list = "";
+CALL build_email_list(@email_list);
+SELECT @email_list;
+$$
++-------------------------------------------------+
+| @email_list                                     |
++-------------------------------------------------+
+| anvay@gmail.com;anish@gmail.com;aman@gmail.com;  |
++-------------------------------------------------+
+
+
+SET @email_list = "2";
+CALL build_email_list(@email_list);
+SELECT @email_list;
+$$
++--------------------------------------------------+
+| @email_list                                      |
++--------------------------------------------------+
+| anvay@gmail.com;anish@gmail.com;aman@gmail.com;2 |
++--------------------------------------------------+
+
+
+

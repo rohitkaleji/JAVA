@@ -1,0 +1,144 @@
+Q5 Write a program to implement Circular Queue
+
+#include <stdio.h>
+
+#define MAX_SIZE 5
+
+struct CircularQueue {
+
+ int array[MAX_SIZE];
+
+ int front, rear;
+
+};
+
+void initialize(struct CircularQueue* queue) {
+
+ queue->front = queue->rear = -1;
+
+}
+
+int isEmpty(struct CircularQueue* queue) {
+
+ return queue->front == -1;
+
+}
+
+int isFull(struct CircularQueue* queue) {
+
+ return (queue->rear + 1) % MAX_SIZE == queue->front;
+
+}
+
+void enqueue(struct CircularQueue* queue, int value) {
+
+ if (!isFull(queue)) {
+
+ if (isEmpty(queue)) {
+queue->front = 0;
+
+ }
+
+ queue->rear = (queue->rear + 1) % MAX_SIZE;
+
+ queue->array[queue->rear] = value;
+
+ printf("Enqueued %d\n", value);
+
+ } else {
+
+ printf("Queue Overflow. Cannot enqueue element %d\n", value);
+
+ }
+
+}
+
+int dequeue(struct CircularQueue* queue) {
+
+ if (!isEmpty(queue)) {
+
+ int dequeuedValue = queue->array[queue->front];
+
+ if (queue->front == queue->rear) {
+
+ initialize(queue);
+
+ } else {
+
+ queue->front = (queue->front + 1) % MAX_SIZE;
+
+ }
+
+ printf("Dequeued %d\n", dequeuedValue);
+
+ return dequeuedValue;
+
+ } else {
+
+ printf("Queue Underflow. Cannot dequeue from an empty 
+
+queue\n");
+
+ return -1;
+
+ }
+
+}
+void display(struct CircularQueue* queue) {
+
+ if (isEmpty(queue)) {
+
+ printf("Queue is empty\n");
+
+ } else {
+
+ printf("Queue elements: ");
+
+ for (int i = queue->front; i != (queue->rear + 1) % MAX_SIZE; i = (i + 
+
+1) % MAX_SIZE) {
+
+ printf("%d ", queue->array[i]);
+
+ }
+
+ printf("\n");
+
+ }
+
+}
+
+int main() {
+
+ struct CircularQueue queue;
+
+ initialize(&queue);
+
+ enqueue(&queue, 5);
+
+ enqueue(&queue, 10);
+
+ enqueue(&queue, 15);
+
+ display(&queue);
+
+ dequeue(&queue);
+
+ display(&queue);
+
+ return 0;
+}
+
+OP:
+
+Enqueued 5
+
+Enqueued 10
+
+Enqueued 15
+
+Queue elements: 5 10 15 
+
+Dequeued 5
+
+Queue elements: 10 1

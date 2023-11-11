@@ -1,0 +1,132 @@
+Q6 Write a program to implement Singly Linked List having insert 
+
+beginning and delete beginning function.
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+struct Node {
+
+ int data;
+
+ struct Node* next;
+
+};
+
+struct Node* createNode(int value) {
+
+ struct Node* newNode = malloc(sizeof(struct Node));
+
+ if (newNode) {
+
+ newNode->data = value;
+
+ newNode->next = NULL;
+
+ }
+
+ return newNode;
+}
+
+void insertBeginning(struct Node** head, int value) {
+
+ struct Node* newNode = createNode(value);
+
+ if (newNode) {
+
+ newNode->next = *head;
+
+ *head = newNode;
+
+ printf("Inserted %d at the beginning\n", value);
+
+ } else {
+
+ printf("Memory allocation failed. Cannot insert %d\n", value);
+
+ }
+
+}
+
+void deleteBeginning(struct Node** head) {
+
+ if (*head) {
+
+ struct Node* temp = *head;
+
+ *head = (*head)->next;
+
+ free(temp);
+
+ printf("Deleted from the beginning\n");
+
+ } else {
+
+ printf("List is empty. Cannot delete from the beginning\n");
+
+ }
+
+}
+
+void display(struct Node* head) {
+
+ while (head) {
+
+ printf("%d -> ", head->data);
+
+ head = head->next;
+}
+
+ printf("NULL\n");
+
+}
+
+void freeList(struct Node* head) {
+
+ while (head) {
+
+ struct Node* temp = head;
+
+ head = head->next;
+
+ free(temp);
+
+ }
+
+}
+
+int main() {
+
+ struct Node* head = NULL;
+
+ insertBeginning(&head, 5);
+
+ insertBeginning(&head, 10);
+
+ insertBeginning(&head, 15);
+
+ display(head);
+
+ deleteBeginning(&head);
+
+ display(head);
+
+ freeList(head);
+
+ return 0;
+
+}
+OP:
+
+Inserted 5 at the beginning
+
+Inserted 10 at the beginning
+
+Inserted 15 at the beginning
+
+15 -> 10 -> 5 -> NULL
+
+Deleted from the beginning
+
+10 -> 5 -> NULL

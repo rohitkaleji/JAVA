@@ -1,0 +1,171 @@
+Q4 Write a program to implement Dynamic Queue (Linked List)
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+struct Node {
+
+ int data;
+
+ struct Node* next;
+
+};
+
+struct DynamicQueue {
+
+ struct Node *front, *rear;
+
+};
+
+void initialize(struct DynamicQueue* queue) {
+
+ queue->front = queue->rear = NULL;
+
+}
+
+int isEmpty(struct DynamicQueue* queue) {
+
+ return queue->front == NULL;
+
+}
+
+void enqueue(struct DynamicQueue* queue, int value) {
+
+ struct Node* newNode = malloc(sizeof(struct Node));
+
+ if (!newNode) {
+printf("Memory allocation failed. Cannot enqueue element %d\n", 
+
+value);
+
+ return;
+
+ }
+
+ newNode->data = value;
+
+ newNode->next = NULL;
+
+ if (isEmpty(queue)) {
+
+ queue->front = queue->rear = newNode;
+
+ } else {
+
+ queue->rear->next = newNode;
+
+ queue->rear = newNode;
+
+ }
+
+ printf("Enqueued %d\n", value);
+
+}
+
+int dequeue(struct DynamicQueue* queue) {
+
+ if (isEmpty(queue)) {
+
+ printf("Queue Underflow. Cannot dequeue from an empty 
+
+queue\n");
+
+ return -1;
+
+ }
+
+ struct Node* dequeuedNode = queue->front;
+
+ int dequeuedValue = dequeuedNode->data;
+queue->front = queue->front->next;
+
+ free(dequeuedNode);
+
+ if (!queue->front) {
+
+ queue->rear = NULL;
+
+ }
+
+ printf("Dequeued %d\n", dequeuedValue);
+
+ return dequeuedValue;
+
+}
+
+void display(struct DynamicQueue* queue) {
+
+ if (isEmpty(queue)) {
+
+ printf("Queue is empty\n");
+
+ return;
+
+ }
+
+ printf("Queue elements: ");
+
+ for (struct Node* current = queue->front; current; current = current-
+
+>next) {
+
+ printf("%d ", current->data);
+
+ }
+
+ printf("\n");
+
+}
+
+void destroy(struct DynamicQueue* queue) {
+
+ while (queue->front) {
+
+ struct Node* temp = queue->front;
+queue->front = queue->front->next;
+
+ free(temp);
+
+ }
+
+ queue->rear = NULL;
+
+}
+
+int main() {
+
+ struct DynamicQueue queue;
+
+ initialize(&queue);
+
+ enqueue(&queue, 5);
+
+ enqueue(&queue, 10);
+
+ enqueue(&queue, 15);
+
+ display(&queue);
+
+ dequeue(&queue);
+
+ display(&queue);
+
+ destroy(&queue);
+
+ return 0;
+
+}
+
+OP:
+
+Enqueued 5
+
+Enqueued 10
+
+Enqueued 15
+
+Queue elements: 5 10 15
+Dequeued 5
+
+Queue elements: 10 1

@@ -1,0 +1,98 @@
+Question 1: Write a program to implement Static stack
+
+#include <stdio.h>
+
+#define MAX_SIZE 10
+
+struct StaticStack {
+
+ int array[MAX_SIZE];
+
+ int top;
+
+};
+
+void initialize(struct StaticStack *stack) {
+
+ stack->top = -1;
+
+}
+
+int isFull(struct StaticStack *stack) {
+
+ return stack->top == MAX_SIZE - 1;
+
+}
+
+int isEmpty(struct StaticStack *stack) {
+
+ return stack->top == -1;
+
+}
+
+void push(struct StaticStack *stack, int value) {
+
+ if (!isFull(stack)) {
+
+ stack->array[++stack->top] = value;
+
+ printf("Pushed %d onto the stack\n", value);
+
+ } else {
+
+ printf("Stack Overflow. Cannot push element %d\n", value);
+
+ }
+
+}
+int pop(struct StaticStack *stack) {
+
+ if (!isEmpty(stack)) {
+
+ printf("Popped %d from the stack\n", stack->array[stack->top--]);
+
+ } else {
+
+ printf("Stack Underflow. Cannot pop from an empty stack\n");
+
+ }
+
+}
+
+void display(struct StaticStack *stack) {
+
+ if (!isEmpty(stack)) {
+
+ printf("Stack elements: ");
+
+ for (int i = 0; i <= stack->top; printf("%d ", stack->array[i++]));
+
+ printf("\n");
+
+ } else {
+
+ printf("Stack is empty\n");
+
+ }
+
+}
+
+int main() {
+
+ struct StaticStack stack;
+
+ initialize(&stack);
+
+ push(&stack, 5);
+
+ push(&stack, 10);
+
+ push(&stack, 15);
+
+ display(&stack);
+
+ pop(&stack);
+
+ display(&stack);
+
+ return 0;

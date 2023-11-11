@@ -1,0 +1,78 @@
+QUESTION 2 Write a program to implement Dynamic stack (Linked List)
+#include <stdio.h>
+#include <stdlib.h>
+struct Node {
+ int data;
+ struct Node* next;
+};
+struct DynamicStack {
+ struct Node* top;
+};
+void initialize(struct DynamicStack* stack) {
+ stack->top = NULL;
+}
+int isEmpty(struct DynamicStack* stack) {
+return stack->top == NULL;
+}
+void push(struct DynamicStack* stack, int value) {
+ struct Node* newNode = malloc(sizeof(struct Node));
+ if (!newNode) {
+ printf("Memory allocation failed. Cannot push element %d\n", 
+value);
+ return;
+ }
+ newNode->data = value;
+ newNode->next = stack->top;
+ stack->top = newNode;
+ printf("Pushed %d onto the stack\n", value);
+}
+int pop(struct DynamicStack* stack) {
+ if (isEmpty(stack)) {
+ printf("Stack Underflow. Cannot pop from an empty stack\n");
+ return -1;
+ }
+ struct Node* poppedNode = stack->top;
+ int poppedValue = poppedNode->data;
+ stack->top = poppedNode->next;
+ free(poppedNode);
+printf("Popped %d from the stack\n", poppedValue);
+ return poppedValue;
+}
+void display(struct DynamicStack* stack) {
+ if (isEmpty(stack)) {
+ printf("Stack is empty\n");
+ return;
+ }
+ printf("Stack elements: ");
+ for (struct Node* current = stack->top; current; current = current-
+>next) {
+ printf("%d ", current->data);
+ }
+ printf("\n");
+}
+void destroy(struct DynamicStack* stack) {
+ while (stack->top) {
+ struct Node* temp = stack->top;
+ stack->top = stack->top->next;
+ free(temp);
+ }
+}
+int main() {
+struct DynamicStack stack;
+ initialize(&stack);
+ push(&stack, 5);
+ push(&stack, 10);
+ push(&stack, 15);
+ display(&stack);
+ pop(&stack);
+ display(&stack);
+ destroy(&stack);
+ return 0;
+} 
+OP
+Pushed 5 onto the stack
+Pushed 10 onto the stack
+Pushed 15 onto the stack
+Stack elements: 15 10 5 
+Popped 15 from the stack
+Stack elements: 10 5
